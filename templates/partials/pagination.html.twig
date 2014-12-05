@@ -1,0 +1,27 @@
+{% if pagination|length > 1 %}
+
+<div class="pagination">
+    {% if pagination.hasPrev %}
+        <a href="{{ base_url }}{{ pagination.params }}{{ pagination.prevUrl }}" class="btn">Previous</a>
+    {% else %}
+        Previous
+    {% endif %}
+    <ul class="inline-list">
+    {% for paginate in pagination %}
+        {% if paginate.isCurrent %}
+            <li><span class="current-page">{{ paginate.number }}</span></li>
+        {% elseif paginate.isInDelta %}
+            <li><a href="{{ base_url }}{{ pagination.params }}{{ paginate.url }}">{{ paginate.number }}</a></li>
+        {% elseif paginate.isDeltaBorder %}
+            <li class="gap"><span>&hellip;</span></li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+    {% if pagination.hasNext %}
+        <a href="{{ base_url }}{{ pagination.params }}{{ pagination.nextUrl }}" class="btn">Next</a>
+    {% else %}
+        Next
+    {% endif %}
+</div>
+
+{% endif %}

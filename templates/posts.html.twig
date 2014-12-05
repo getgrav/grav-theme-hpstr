@@ -1,0 +1,36 @@
+{% embed 'partials/base.html.twig' %}
+
+    {% set collection = page.collection() %}
+
+    {% block content %}
+
+        {% for post in collection %}
+          {% set this_year = post.date | date("Y") %}
+          {% set next_year = collection.prevSibling(post.path).date | date("Y") %}
+
+          {% if loop.first %}
+            <article>
+              <h2 id="{{ this_year }}-ref">{{ this_year }}</h2>
+              <ul>
+          {% endif %}
+
+                <li class="entry-title"><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+
+          {% if loop.last %}
+              </ul>
+            </article>
+          {% else %}
+            {% if this_year != next_year %}
+              </ul>
+            </article>
+            <article>
+              <h2 id="{{ next_year }}-ref">{{next_year}}</h2>
+                <ul>
+            {% endif %}
+          {% endif %}
+
+        {% endfor %}
+
+    {% endblock %}
+
+{% endembed %}

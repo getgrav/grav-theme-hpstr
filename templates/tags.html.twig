@@ -1,0 +1,28 @@
+{% embed 'partials/base.html.twig' %}
+
+    {% block content %}
+        {% set tags = taxonomy.taxonomy['tags'] %}
+
+        <ul class="entry-meta inline-list">
+        {% for tag, items in tags %}
+            <li><a href="#{{ tag }}" class="tag">{{ tag }} <span>{{ items|length }}</span></a></li>
+        {% endfor %}
+        </ul>
+
+        {% for tag, items in tags %}
+        <article>
+            <h2 id="{{ tag }}">{{ tag }}</h2>
+            <ul>
+            {% for path, slug in items %}
+                {% set post = grav['pages'].get(path) %}
+                {% if post.title != null %}
+                <li class="entry-title"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </article><!-- /.hentry -->
+        {% endfor %}
+
+    {% endblock %}
+
+{% endembed %}
