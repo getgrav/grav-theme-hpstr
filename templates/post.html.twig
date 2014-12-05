@@ -1,0 +1,72 @@
+{% embed 'partials/base.html.twig' %}
+
+	{% set base_url = page.parent.url %}
+    {% set feed_url = base_url %}
+
+    {% if base_url == '/' %}
+        {% set base_url = '' %}
+    {% endif %}
+
+    {% if base_url == base_url_relative %}
+        {% set feed_url = base_url~'/'~page.parent.slug %}
+    {% endif  %}
+
+    {% block body %}
+        <body id="post" {% if page.header.image.feature %}class="feature"{% endif %}>
+    {% endblock %}
+
+    {% block header %}
+        {% if page.header.image.feature %}
+        <div class="entry-header">
+          {% if page.header.image.credit %}<div class="image-credit">Image source: {% if page.header.image.creditlink %}<a href="{{ page.header.image.creditlink }}">{% endif %}{{ page.header.image.credit }}{% if page.header.image.creditlink %}</a>{% endif %}</div><!-- /.image-credit -->{% endif %}
+          <div class="entry-image">
+            <img src="{{ page.media[page.header.image.feature].url }}" alt="{{ page.title }}">
+          </div><!-- /.entry-image -->
+        </div><!-- /.entry-header -->
+        {% endif %}
+    {% endblock %}
+
+	{% block content %}
+
+        <article class="hentry">
+            <header class="header-title">
+              <div class="header-title-wrap">
+                {% if page.header.link %}
+                  <h1 class="entry-title"><a href="{{ page.header.link }}">{{ page.title }}</a></h1>
+                {% else %}
+                  <h1 class="entry-title"><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a></h1>
+                {% endif %}
+                {% if page.header.date %}
+                <h2>{{ page.date | date("F d, Y") }}</h2>
+                {% endif %}
+                {% if config.plugins.readingtime.enabled %}
+                  <p class="entry-reading-time">
+                    <i class="fa fa-clock-o"></i>
+                    Reading time ~{{ page.content|readingtime({'round':'minutes'}) }}
+                  </p><!-- /.entry-reading-time -->
+                {% endif %}
+              </div><!-- /.header-title-wrap -->
+            </header>
+            <div class="entry-content">
+              {{ page.content }}
+              <footer class="entry-meta">
+                <span class="entry-tags">
+                    {% for tag in page.taxonomy.tags %}
+                    <a href="{{ base_url }}/tag:{{ tag }}" title="Pages tagged {{ tag }}" class="tag">{{ tag }}</a>
+                    {% endfor %}
+                </span>
+                <span><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a> was published on <span class="entry-date date published updated"><time datetime="{{ page.date | date }}">{{ page.date | date("F d, Y") }}</time></span></span>
+                {% if page.modified %}(revised: <span class="entry-date date modified"><time datetime="{{ page.modified }}">{{ page.modified | date("m/d/Y") }}</time></span>){% endif %}
+                <span class="author vcard"><span class="fn"><a href="{{ site.url }}/about" title="About {{ site.owner.name }}">{{ site.owner.name }}</a></span></span>
+                {% if page.header.share is not defined or page.header.share != false %}{% include 'partials/social-share.html.twig' %}{% endif %}
+              </footer>
+            </div><!-- /.entry-content -->
+            {% if page.header.comments is not defined or page.header.comments != false %}
+                <section id="disqus_thread"></section>
+                {% include 'partials/disqus-comments.html.twig' %}
+            {% endif %}
+            {% include 'partials/read-more.html.twig' %}
+          </article>
+	{% endblock %}
+
+{% endembed %}
