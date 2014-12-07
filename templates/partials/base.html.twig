@@ -1,68 +1,47 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
-    <meta charset="utf-8">
-    <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ site.description }}" />
-
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    {% for meta in page.metadata %}
-    <meta {% if meta.name %}name="{{ meta.name }}" {% endif %}{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv }}" {% endif %}{% if meta.charset %}charset="{{ meta.charset }}" {% endif %}{% if meta.property %}property="{{ meta.property }}" {% endif %}{% if meta.content %}content="{{ meta.content }}" {% endif %}/>
-    {% endfor %}
-
-    <link rel="canonical" href="{{ page.url() }}">
-    <link rel="shortcut icon" href="{{ theme_url }}/images/favicon.png">
-    <link rel="stylesheet" href="http://brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-    {% do assets.addCss('theme://css/main.css') %}
-    {# {% do assets.addCss('theme://css/print.css') %} #}
-    {{ assets.css() }}
+{% include 'partials/head.html.twig' %}
 </head>
+
 {% block body %}
-<body>
+<body id="post-index" {% if page.header.image.feature %}class="feature"{% endif %}>
 {% endblock %}
 
-{% set home = pages.find(config.system.home.alias) %}
+{% include 'partials/browser-upgrade.html.twig' %}
+{% include 'partials/navigation.html.twig' %}
 
-    {% block header %}
-        <a href="{{ base_url_relative }}" class="logo-readium"><span class="logo" style="background-image: url({{ base_url_relative }}{{ site.logo }})"></span></a>
-    {% endblock %}
+{% block header %}
+    <div class="entry-header">
+      {% if page.header.image.credit %}<div class="image-credit">Image source: <a href="{{ page.header.image.creditlink }}">{{ page.header.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
+      {% if page.header.image.feature %}
+        <div class="entry-image">
+          {{ page.media[page.header.image.feature].html }}
+        </div><!-- /.entry-image -->
+      {% endif %}
+      <div class="header-title">
+        <div class="header-title-wrap">
+          <h1>{{ site.title }}</h1>
+          <h2>{{ page.title }}</h2>
+        </div><!-- /.header-title-wrap -->
+      </div><!-- /.header-title -->
+    </div><!-- /.entry-header -->
+{% endblock %}
 
-    <!-- content start -->
+<div id="main" role="main">
+ {% block content %}{% endblock %}
+</div><!-- /#main -->
 
-    {% block content %}
-    <div class="page-content">
-        <div class="wrapper">
-            {{ content }}
-        </div>
-    </div>
-    {% endblock %}
-    <!-- content end -->
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    {% include 'partials/footer.html.twig' %}
+  </footer>
+</div><!-- /.footer-wrapper -->
 
-
-    {% block footer %}
-    <!-- footer start -->
-    <footer class="site-footer">
-      <a class="subscribe" href="{{ home.url }}/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
-        <div class="inner">
-             <section class="copyright">All content copyright <a href="mailto:{{ site.email}}">{{ site.name }}</a> &copy; {{ "now"|date('Y') }} &bull; All rights reserved.</section>
-             <section class="poweredby">Made with <a href="http://getgrav.org"> Grav</a></section>
-        </div>
-    </footer>
-    <!-- footer end -->
-    {% endblock %}
-
-{% include 'partials/javascripts.html.twig' %}
+{% include 'partials/scripts.html.twig' %}
 
 </body>
 </html>

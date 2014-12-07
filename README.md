@@ -1,10 +1,12 @@
-# Mediator Grav Theme
+# HPSTR Grav Theme
 
-The Mediator theme for Grav is a direct port of the [Mediator Theme for Jekyll](https://github.com/dirkfabisch/mediator) designed by [Dirk Fabisch](http://blog.base68.com/about/) which in turn was inspired by the [Readium 2.0 Theme for Ghost](http://www.svenread.com/readium-ghost-theme/).
+This [Grav](http://getgrav.org) theme is a port of the [Jekyll HPSTR Theme](https://github.com/mmistakes/hpstr-jekyll-theme) developed my [mmistakes](https://mademistakes.com/). 
+
+This started off as a bit of an experiment to see how much time and effort it would take to port a **Jekyll** theme to **Grav**.  Also I wanted to ensure that Grav had all the features and capabilities to pull this off.  It took me 1 full day to complete from start to finish and is 100% feature complete with the original Jekyll version.  I have taken the liberty to modify the file structure to better suite Grav's organization paradigm.
 
 ## Installation / Configuration
 
-The theme works best in combination with appropriate content and configuration. Please check out the [Mediator Skeleton Package](https://github.com/getgrav/grav-skeleton-mediator-site) that is the self-contained repository for a complete Mediator site which includes: **sample content**, **configuration**, **theme**, **plugins**.
+The theme by itself is not that useful, so please check out the [HPSTR Skeleton Package](https://github.com/getgrav/grav-skeleton-hpstr-site) that is the self-contained repository for a complete HPSTR site which includes: **sample content**, **configuration**, **theme**, **plugins**.
 
 ---
 
