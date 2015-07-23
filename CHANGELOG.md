@@ -1,3 +1,9 @@
+# v1.1.0
+## 07/22/2015
+
+1. [](#bugfix)
+    * Clicking off the menu now closes it properly
+
 # v1.0.4
 ## 07/14/2015
 
