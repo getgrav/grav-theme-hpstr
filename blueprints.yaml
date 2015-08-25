@@ -1,5 +1,5 @@
 name: HPSTR
-version: 1.1.0
+version: 1.2.0
 description: "HPSTR theme by mademistakes ported to **Grav**"
 icon: camera-retro
 author:
@@ -13,5 +13,22 @@ bugs: https://github.com/getgrav/grav-theme-hpstr/issues
 license: MIT
 
 form:
-  validation: strict
+  validation: loose
   fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in navbar
+        highlight: 1
+        default: 0
+        options:
+          1: Enabled
+          0: Disabled
+        validate:
+          type: bool
+
+    color:
+        type: text
+        label: Color
+        default: 'blue'
+        validate:
+          type: text
