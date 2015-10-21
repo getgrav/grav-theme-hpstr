@@ -52,7 +52,7 @@
               <footer class="entry-meta">
                 <span class="entry-tags">
                     {% for tag in page.taxonomy.tags %}
-                    <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}" title="Pages tagged {{ tag }}" class="tag">{{ tag }}</a>
+                    <a href="{{ base_url }}/tags{{ config.system.param_sep }}{{ tag }}" title="Pages tagged {{ tag }}" class="tag">{{ tag }}</a>
                     {% endfor %}
                 </span>
                 <span><a href="{{ page.url }}" rel="bookmark" title="{{ page.title }}">{{ page.title }}</a> was published on <span class="entry-date date published updated"><time datetime="{{ page.date | date }}">{{ page.date | date("F d, Y") }}</time></span></span>
