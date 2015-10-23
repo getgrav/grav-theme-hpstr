@@ -1,3 +1,11 @@
+# v1.3.0
+## 10/23/2015
+
+1. [](#bugfix)
+    * Fixed menu not working at root    
+    * Fixed issue where links were `/tag` instead of `/tags`
+    * Fixed issue with bad URL in date header element
+
 # v1.2.0
 ## 08/25/2015
 
