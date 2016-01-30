@@ -39,10 +39,10 @@
                 {% if page.header.date %}
                 <h2>{{ page.date | date("F d, Y") }}</h2>
                 {% endif %}
-                {% if config.plugins.readingtime.enabled %}
+                {% if config.plugins.reading_time.enabled %}
                   <p class="entry-reading-time">
                     <i class="fa fa-clock-o"></i>
-                    Reading time ~{{ page.content|readingtime({'round':'minutes'}) }}
+                    Reading time ~{{ page.content|reading_time({'round':'minutes'}) }}
                   </p><!-- /.entry-reading-time -->
                 {% endif %}
               </div><!-- /.header-title-wrap -->
