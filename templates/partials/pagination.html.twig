@@ -6,7 +6,8 @@
 
 <div class="pagination">
     {% if pagination.hasPrev %}
-        <a href="{{ base_url }}{{ pagination.params }}{{ pagination.prevUrl }}" class="btn">Previous</a>
+        {% set url = (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
+        <a href="{{ url }}" class="btn">Previous</a>
     {% else %}
         Previous
     {% endif %}
@@ -15,14 +16,16 @@
         {% if paginate.isCurrent %}
             <li><span class="current-page">{{ paginate.number }}</span></li>
         {% elseif paginate.isInDelta %}
-            <li><a href="{{ base_url }}{{ pagination.params }}{{ paginate.url }}">{{ paginate.number }}</a></li>
+            {% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
+            <li><a href="{{ url }}">{{ paginate.number }}</a></li>
         {% elseif paginate.isDeltaBorder %}
             <li class="gap"><span>&hellip;</span></li>
         {% endif %}
     {% endfor %}
     </ul>
     {% if pagination.hasNext %}
-        <a href="{{ base_url }}{{ pagination.params }}{{ pagination.nextUrl }}" class="btn">Next</a>
+        {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
+        <a href="{{ url }}" class="btn">Next</a>
     {% else %}
         Next
     {% endif %}
