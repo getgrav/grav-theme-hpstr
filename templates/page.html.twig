@@ -33,8 +33,15 @@
                 {% endif %}
               </header>
               <div class="entry-content">
-                {{ post.content }}
-              </div><!-- /.entry-content -->
+                {% if post.header.continue_link %}
+                  {{ post.summary }}
+                  <br>
+                  <a href="{{ post.url }}" title="{{ post.title }}" class="btn btn-primary">Continue Reading</a>
+                {% else %}
+                  {{ post.content }}
+                {% endif %}
+              </div>
+              <!-- /.entry-content -->
             </article><!-- /.hentry -->
         {% endfor %}
 
