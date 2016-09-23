@@ -1,7 +1,7 @@
 {% embed 'partials/base.html.twig' %}
 
-	{% set collection = page.collection() %}
-	{% set base_url = page.url %}
+    {% set collection = page.collection() %}
+    {% set base_url = page.url %}
     {% set feed_url = base_url %}
 
     {% if base_url == '/' %}
@@ -12,7 +12,7 @@
         {% set feed_url = base_url~'/'~page.slug %}
     {% endif  %}
 
-	{% block content %}
+    {% block content %}
 
         {% for post in collection %}
             <article class="hentry">
@@ -33,7 +33,15 @@
                 {% endif %}
               </header>
               <div class="entry-content">
-                {{ post.summary }}
+                {% if grav.theme.config.pages.display == 'content' %}
+                    {{ post.content }}
+                {% elseif grav.theme.config.pages.display == 'summary' %}
+                    {{ post.summary }}
+                {% elseif grav.theme.config.pages.display == 'custom' %}
+                    {% include 'partials/pages-displaytext.html.twig' %}
+                {% else %}
+                    {{ post.summary }}
+              {% endif %}
               </div><!-- /.entry-content -->
             </article><!-- /.hentry -->
         {% endfor %}
@@ -42,7 +50,7 @@
         {% include 'partials/pagination.html.twig' with {'pagination':collection.params.pagination} %}
         {% endif %}
 
-	{% endblock %}
+    {% endblock %}
 
 {% endembed %}
 

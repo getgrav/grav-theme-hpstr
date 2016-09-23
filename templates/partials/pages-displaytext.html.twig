@@ -1,0 +1,7 @@
+{% if post.summary == post.content %}
+    {{ post.content }}
+{% else %}
+    {{ post.summary }}
+    <br>
+    <a href="{{ post.url }}" title="{{ post.title }}" class="btn btn-primary">Continue reading</a>
+{% endif %}
