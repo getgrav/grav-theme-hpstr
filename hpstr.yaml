@@ -2,3 +2,5 @@ enabled: true
 color: blue
 dropdown:
   enabled: false
+pages: 
+  display: content # content, summary, custom
