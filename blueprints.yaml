@@ -1,5 +1,5 @@
 name: HPSTR
-version: 1.5.0
+version: 1.6.0
 description: "HPSTR theme by mademistakes ported to **Grav**"
 icon: camera-retro
 author:
@@ -11,6 +11,8 @@ demo: http://demo.getgrav.org/hpstr-skeleton
 keywords: hpstr, theme, modern, fast, responsive, blog
 bugs: https://github.com/getgrav/grav-theme-hpstr/issues
 license: MIT
+dependencies:
+  - { name: grav, version: '>=1.5.10' }
 
 form:
   validation: loose
