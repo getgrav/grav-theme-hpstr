@@ -1,7 +1,7 @@
 {% if post.summary == post.content %}
-    {{ post.content }}
+    {{ post.content|raw }}
 {% else %}
-    {{ post.summary }}
+    {{ post.summary|raw }}
     <br>
     <a href="{{ post.url }}" title="{{ post.title }}" class="btn btn-primary">Continue reading</a>
 {% endif %}

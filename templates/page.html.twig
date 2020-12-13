@@ -34,13 +34,13 @@
               </header>
               <div class="entry-content">
                 {% if grav.theme.config.pages.display == 'content' %}
-                    {{ post.content }}
+                    {{ post.content|raw }}
                 {% elseif grav.theme.config.pages.display == 'summary' %}
-                    {{ post.summary }}
+                    {{ post.summary|raw }}
                 {% elseif grav.theme.config.pages.display == 'custom' %}
                     {% include 'partials/pages-displaytext.html.twig' %}
                 {% else %}
-                    {{ post.summary }}
+                    {{ post.summary|raw }}
               {% endif %}
               </div><!-- /.entry-content -->
             </article><!-- /.hentry -->
