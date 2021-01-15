@@ -48,7 +48,7 @@
               </div><!-- /.header-title-wrap -->
             </header>
             <div class="entry-content">
-              {{ page.content }}
+              {{ page.content|raw }}
               <footer class="entry-meta">
                 <span class="entry-tags">
                     {% for tag in page.taxonomy.tags %}
