@@ -1,5 +1,7 @@
 name: HPSTR
-version: 1.6.0
+slug: hpstr
+type: theme
+version: 1.6.1
 description: "HPSTR theme by mademistakes ported to **Grav**"
 icon: camera-retro
 author:
