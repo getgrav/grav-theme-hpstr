@@ -11,3 +11,22 @@
   ga('send', 'pageview');
 </script>
 {% endif %}
+{% if site.matomo.host %}
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  {% if site.matomo.disablecookies %}_paq.push(['disableCookies']);{% endif %}
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//{{ site.matomo.host }}/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '{{ site.matomo.siteid }}']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><img src="//{{ site.matomo.host }}/piwik.php?idsite={{ site.matomo.siteid }}&amp;rec=1" style="border:0;" alt="" /></noscript>
+<!-- End Matomo Code -->
+{% endif %}
