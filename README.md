@@ -67,6 +67,14 @@ If you want to set HPSTR as the default theme, you can do so by following these 
 
 Once this is done, you should be able to see the new theme on the frontend. Keep in mind any customizations made to the previous theme will not be reflected as all of the theme and templating information is now being pulled from the **hpstr** folder.
 
+# Customizing
+
+If you want to customize the theme, it's a good idea to fork or clone the repo so that you can incorporate future upstream changes while keeping your customizations. Note that in such case you will have to update the theme manually. You will also need to install the SASS compiler.
+
+To change theme styles, work on the files in the `_sass` folder and then run the command while in the theme folder:
+
+>sass --no-source-map .\_sass\_all.scss .\assets\css\main.css
+
 ---
 
 ## License
