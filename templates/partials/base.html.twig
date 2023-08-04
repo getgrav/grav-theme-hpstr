@@ -67,7 +67,7 @@
       {% if page.header.image.credit %}<div class="image-credit">Image source: <a href="{{ page.header.image.creditlink }}">{{ page.header.image.credit }}</a></div><!-- /.image-credit -->{% endif %}
       {% if page.header.image.feature %}
         <div class="entry-image">
-          {{ page.media[page.header.image.feature].html }}
+          {{ page.media[page.header.image.feature].html | raw }}
         </div><!-- /.entry-image -->
       {% endif %}
       <div class="header-title">
