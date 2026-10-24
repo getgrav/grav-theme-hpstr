@@ -1,3 +1,9 @@
+# v1.6.2
+## 10/23/2026
+
+1. [](#bugfix)
+    * The post header image renders again on Grav 2 instead of showing its HTML as text
+
 # v1.6.1
 ## 01/15/2021
 
