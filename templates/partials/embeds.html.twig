@@ -1,0 +1,29 @@
+{#
+  The embeds a post lists in its front matter, drawn by the theme. Grav 2
+  escapes raw <script> and <iframe> tags in page content, so a video or a
+  gist goes in the front matter instead:
+
+    video:
+      youtube: SU3kYxJmWuQ   # or vimeo: 76979871
+    gists:
+      - mmistakes/6589546
+
+  `where` is 'top' (the video, above the content) or 'bottom' (the gists,
+  below it). Only well-formed IDs are used, so the front matter can never
+  put anything else into the markup.
+#}
+{% set video = item.header.video %}
+{% if where == 'top' and video %}
+  {% if video.youtube and video.youtube matches '/^[A-Za-z0-9_-]{6,20}$/' %}
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.youtube }}" frameborder="0" allowfullscreen></iframe>
+  {% elseif video.vimeo and video.vimeo matches '/^[0-9]{1,12}$/' %}
+    <iframe width="560" height="315" src="https://player.vimeo.com/video/{{ video.vimeo }}" frameborder="0" allowfullscreen></iframe>
+  {% endif %}
+{% endif %}
+{% if where == 'bottom' %}
+  {% for gist in item.header.gists ?? [] %}
+    {% if gist matches '/^([A-Za-z0-9-]{1,39}\\/)?[0-9a-f]{1,40}$/' %}
+      <script src="https://gist.github.com/{{ gist }}.js"></script>
+    {% endif %}
+  {% endfor %}
+{% endif %}

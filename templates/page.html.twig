@@ -34,7 +34,9 @@
               </header>
               <div class="entry-content">
                 {% if grav.theme.config.pages.display == 'content' %}
+                    {% include 'partials/embeds.html.twig' with {item: post, where: 'top'} %}
                     {{ post.content|raw }}
+                    {% include 'partials/embeds.html.twig' with {item: post, where: 'bottom'} %}
                 {% elseif grav.theme.config.pages.display == 'summary' %}
                     {{ post.summary|raw }}
                 {% elseif grav.theme.config.pages.display == 'custom' %}

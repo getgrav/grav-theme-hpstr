@@ -1,5 +1,7 @@
 {% if post.summary == post.content %}
+    {% include 'partials/embeds.html.twig' with {item: post, where: 'top'} %}
     {{ post.content|raw }}
+    {% include 'partials/embeds.html.twig' with {item: post, where: 'bottom'} %}
 {% else %}
     {{ post.summary|raw }}
     <br>
