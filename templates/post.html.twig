@@ -48,7 +48,9 @@
               </div><!-- /.header-title-wrap -->
             </header>
             <div class="entry-content">
+              {% include 'partials/embeds.html.twig' with {item: page, where: 'top'} %}
               {{ page.content|raw }}
+              {% include 'partials/embeds.html.twig' with {item: page, where: 'bottom'} %}
               <footer class="entry-meta">
                 <span class="entry-tags">
                     {% for tag in page.taxonomy.tags %}
